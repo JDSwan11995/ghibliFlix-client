@@ -679,9 +679,9 @@ var _client = require("react-dom/client");
 // Import statement to indicate that you need to bundle `./index.scss`
 var _indexScss = require("./index.scss");
 // Main component (will eventually use all the others)
-const MyFlixApplication = ()=>{
+const GhibliFlixApp = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "my-flix",
+        className: "ghibli-flix",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             children: "Good morning"
         }, void 0, false, {
@@ -695,18 +695,18 @@ const MyFlixApplication = ()=>{
         columnNumber: 5
     }, undefined);
 };
-_c = MyFlixApplication;
+_c = GhibliFlixApp;
 // Finds the root of your app
 const container = document.querySelector("#root");
 const root = (0, _client.createRoot)(container);
 // Tells React to render your app in the root DOM element
-root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(MyFlixApplication, {}, void 0, false, {
+root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(GhibliFlixApp, {}, void 0, false, {
     fileName: "src/index.jsx",
     lineNumber: 20,
     columnNumber: 13
 }, undefined));
 var _c;
-$RefreshReg$(_c, "MyFlixApplication");
+$RefreshReg$(_c, "GhibliFlixApp");
 
   $parcel$ReactRefreshHelpers$ca65.postlude(module);
 } finally {
