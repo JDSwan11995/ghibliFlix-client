@@ -1,15 +1,12 @@
-import { createRoot } from 'react-dom/client';
+import { createRoot } from "react-dom/client";
 
-// Import statement to indicate that you need to bundle `./index.scss`
+import { MainView } from "./src/components/main-view/main-view";
+
 import "./index.scss";
 
 // Main component (will eventually use all the others)
 const GhibliFlixApp = () => {
-  return (
-    <div className="ghibli-flix">
-      <div>Good morning</div>
-    </div>
-  );
+  return <MainView />;
 };
 
 // Finds the root of your app

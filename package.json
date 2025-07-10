@@ -2,6 +2,8 @@
   "name": "ghibliflix-client",
   "version": "1.0.0",
   "scripts": {
+    "clean": "rm -rf dist",
+    "start": "parcel index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jared Swan",
