@@ -16125,7 +16125,7 @@ const MainView = ()=>{
         {
             id: 1,
             title: "My Neighbor Totoro",
-            image: "/images/totoro.jpg",
+            image: "../images/totoro.jpg",
             director: "Hayao Miyazaki",
             description: "Young sisters, Satsuki and Mei, move to the countryside with their father to be near their ailing mother, they soon meet the friendly and curious spirits of the forest.",
             genre: "Fantasy",
@@ -16135,7 +16135,7 @@ const MainView = ()=>{
         {
             id: 2,
             title: "Grave of the Fireflies",
-            image: "/images/fireflies.jpg",
+            image: "../images/fireflies.jpg",
             director: "Isao Takahata",
             description: "A poignant animated film about two siblings struggling to survive in wartime Japan.",
             genre: "Period Drama",
@@ -16145,7 +16145,7 @@ const MainView = ()=>{
         {
             id: 3,
             title: "The Red Turtle",
-            image: "/images/turtle.jpg",
+            image: "../images/turtle.jpg",
             director: "Micha\xebl Dudok de Wit",
             description: "A wordless meditative tale about a man's life on a deserted island and the profound connection he forms with nature.",
             genre: "Drama",
@@ -16190,7 +16190,7 @@ const MainView = ()=>{
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "BSadPrqlVRhqMYrW16HbmvE905E=");
+_s(MainView, "x7Z9+b7jlXoTeFZXgbsuAVQQYaQ=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
