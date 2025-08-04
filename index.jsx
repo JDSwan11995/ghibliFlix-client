@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import { MainView } from "./src/components/main-view/main-view";
+import { MainView } from "./src/components/main-view/main-view.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.scss";
 import Container from "react-bootstrap/Container";

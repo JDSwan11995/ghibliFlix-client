@@ -1,4 +1,4 @@
-import PropTypes, { string } from "prop-types";
+import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
 
 import "./movie-card.scss";
@@ -8,7 +8,9 @@ export const MovieCard = ({ movie, onMovieClick }) => {
     <Card className="h-100">
       <Card.Img
         variant="top"
-        src={movie.ImagePath}
+        src={
+          movie.ImagePath || "https://via.placeholder.com/300x200?text=No+Image"
+        }
         style={{ maxHeight: "200px", objectFit: "cover" }}
       />
       <Card.Body>
