@@ -1,12 +1,16 @@
 import { createRoot } from "react-dom/client";
-
 import { MainView } from "./src/components/main-view/main-view";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.scss";
+import Container from "react-bootstrap/Container";
 
 // Main component (will eventually use all the others)
 const GhibliFlixApp = () => {
-  return <MainView />;
+  return (
+    <Container>
+      <MainView />
+    </Container>
+  );
 };
 
 // Finds the root of your app
