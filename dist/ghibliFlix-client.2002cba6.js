@@ -16137,18 +16137,45 @@ var _colDefault = parcelHelpers.interopDefault(_col);
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    const storedToken = localStorage.getItem("token");
-    const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
-    const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
-    const [movies, setMovies] = (0, _react.useState)([]);
+    const [movies, setMovies] = (0, _react.useState)([
+        {
+            id: 1,
+            title: "My Neighbor Totoro",
+            image: "../images/totoro.jpg",
+            director: "Hayao Miyazaki",
+            description: "Young sisters, Satsuki and Mei, move to the countryside with their father to be near their ailing mother, they soon meet the friendly and curious spirits of the forest.",
+            genre: "Fantasy",
+            release: "April 16 1988",
+            rating: "94%"
+        },
+        {
+            id: 2,
+            title: "Grave of the Fireflies",
+            image: "../images/fireflies.jpg",
+            director: "Isao Takahata",
+            description: "A poignant animated film about two siblings struggling to survive in wartime Japan.",
+            genre: "Period Drama",
+            release: "April 16 1988",
+            rating: "100%"
+        },
+        {
+            id: 3,
+            title: "The Red Turtle",
+            image: "../images/turtle.jpg",
+            director: "Micha\xebl Dudok de Wit",
+            description: "A wordless meditative tale about a man's life on a deserted island and the profound connection he forms with nature.",
+            genre: "Drama",
+            release: "May 18 2016",
+            rating: "93%"
+        }
+    ]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     const handleLogout = ()=>{
         setUser(null);
         setToken(null);
         localStorage.clear();
     };
-    (0, _react.useEffect)(()=>{
+    useEffect(()=>{
         if (!token) return;
         fetch("https://ghibliheroku-f28bf5d9329a.herokuapp.com/movies", {
             headers: {
@@ -16164,25 +16191,25 @@ const MainView = ()=>{
         md: 5,
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
-                onLoggedIn: (user, token)=>{
-                    setUser(user);
-                    setToken(token);
+                onLoggedIn: (user1, token1)=>{
+                    setUser(user1);
+                    setToken(token1);
                 }
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 37,
+                lineNumber: 68,
                 columnNumber: 9
             }, undefined),
             "or",
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signupView.SignupView), {}, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 44,
+                lineNumber: 75,
                 columnNumber: 9
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 36,
+        lineNumber: 67,
         columnNumber: 7
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
@@ -16192,14 +16219,14 @@ const MainView = ()=>{
                 children: "Logout"
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 52,
+                lineNumber: 83,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: "The list is empty!"
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 53,
+                lineNumber: 84,
                 columnNumber: 9
             }, undefined)
         ]
@@ -16216,12 +16243,12 @@ const MainView = ()=>{
                     children: "Logout"
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 61,
+                    lineNumber: 92,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 60,
+                lineNumber: 91,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
@@ -16236,12 +16263,12 @@ const MainView = ()=>{
                         onBackClick: ()=>setSelectedMovie(null)
                     }, void 0, false, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 67,
+                        lineNumber: 98,
                         columnNumber: 13
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 66,
+                    lineNumber: 97,
                     columnNumber: 11
                 }, undefined) : movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
                         className: "mb-5",
@@ -16253,23 +16280,23 @@ const MainView = ()=>{
                             }
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 75,
+                            lineNumber: 106,
                             columnNumber: 15
                         }, undefined)
                     }, movie._id, false, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 74,
+                        lineNumber: 105,
                         columnNumber: 13
                     }, undefined))
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 64,
+                lineNumber: 95,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true);
 };
-_s(MainView, "9wJBvfUyU2IigbyWC+M5y3EH9h4=");
+_s(MainView, "iuzu4IhQiDbBTqpt8RkqRuaej4Q=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
