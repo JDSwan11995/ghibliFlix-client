@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button, Form } from "react-bootstrap";
 
 export const SignupView = () => {
   const [name, setName] = useState("");
@@ -36,54 +37,58 @@ export const SignupView = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Name:
-        <input
+    <Form onSubmit={handleSubmit}>
+      <Form.Group className="mb-2">
+        <Form.Label>Name: </Form.Label>
+        <Form.Control
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-      </label>
-      <label>
-        Username:
-        <input
+      </Form.Group>
+
+      <Form.Group className="mb-2">
+        <Form.Label>Username: </Form.Label>
+        <Form.Control
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
           minLength="3"
         />
-      </label>
-      <label>
-        Password:
-        <input
+      </Form.Group>
+
+      <Form.Group className="mb-2">
+        <Form.Label>Password:</Form.Label>
+        <Form.Control
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
           minLength="5"
         />
-      </label>
-      <label>
-        Email:
-        <input
+      </Form.Group>
+
+      <Form.Group>
+        <Form.Label>Email: </Form.Label>
+        <Form.Control
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-      </label>
-      <label>
-        Birthday:
-        <input
+      </Form.Group>
+
+      <Form.Group>
+        <Form.Label>Birthday: </Form.Label>
+        <Form.Control
           type="date"
           value={birthday}
           onChange={(e) => setBirthday(e.target.value)}
           required
         />
-      </label>
-      <button type="submit">Submit</button>
-    </form>
+      </Form.Group>
+      <Button type="submit">Sign Up</Button>
+    </Form>
   );
 };

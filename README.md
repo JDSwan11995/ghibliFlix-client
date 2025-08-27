@@ -21,3 +21,7 @@ Movie Detail View: View detailed information about selected movies.
 Protected Routes: Movies are only viewable when authenticated.
 
 Logout: Clears stored user/token from localStorage.
+
+Japanese Posters sourced from Wikipedia under Fair use
+
+English Posters sourced from theposterdb.com/user/DIIVOY
