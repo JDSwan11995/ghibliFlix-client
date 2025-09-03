@@ -3,10 +3,18 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import { Button, Card, ListGroup } from "react-bootstrap";
 import { posters } from "../../images/posters";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-export const MovieView = ({ movie, onFavoriteToggle, isFavorite }) => {
+export const MovieView = ({ movies }) => {
+  const { movieTitle } = useParams();
   const navigate = useNavigate();
+
+  const decodedTitle = decodeURIComponent(movieTitle);
+  const movie = movies.find((m) => m.Title === decodedTitle);
+
+  if (!movie) {
+    return <p>Movie not Found!</p>;
+  }
 
   const baseName = movie.Title.toLowerCase()
     .replace(/\s+/g, "")

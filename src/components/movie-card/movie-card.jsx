@@ -1,58 +1,34 @@
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-
 import "./movie-card.scss";
 
 export const MovieCard = ({ movie, user, updateFavorites }) => {
   const isFavorite = user?.FavoriteMovies?.includes(movie._id);
 
-  const navigate = useNavigate();
-
-  function handleClick() {
-    navigate(`/movies/${encodeURIComponent(movie._id)}`);
-  }
-
   const handleFavoriteToggle = (e) => {
     e.stopPropagation();
-    console.log("New favorite movie added!");
-
     const movieID = movie._id;
     const method = isFavorite ? "DELETE" : "POST";
 
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    const username =
-      user?.Username ||
-      user?.username ||
-      storedUser?.Username ||
-      storedUser?.username;
-
-    if (!username) {
-      console.error("Username is missingfrom both props and localStorage.");
-      return;
-    }
-    const requestUrl = `${process.env.REACT_APP_API_URL}/users/${username}/movies/${movieID}`;
-    console.log("Sending request to: ", requestUrl);
-
-    fetch(requestUrl, {
-      method: method,
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
+    fetch(
+      `${process.env.REACT_APP_API_URL}/users/${user.Username}/movies/${movieID}`,
+      {
+        method,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    )
       .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status} ${response.statusText}`);
-        }
+        if (!response.ok) throw new Error("Failed to update favorite");
         return response.json();
       })
       .then((updatedUser) => {
         updateFavorites(updatedUser.FavoriteMovies);
       })
-      .catch((err) => {
-        console.error("Failed to update favorite: ", err);
-      });
+      .catch((err) => console.error(err));
   };
 
   return (
@@ -61,24 +37,27 @@ export const MovieCard = ({ movie, user, updateFavorites }) => {
         variant="top"
         src={movie.ImageURL}
         alt={`${movie.Title} Poster`}
-        onError={(e) => {
-          e.target.src = "https://via.placeholder.com/300x450?text=No+Image";
-        }}
+        onError={(e) =>
+          (e.target.src = "https://via.placeholder.com/300x450?text=No+Image")
+        }
       />
       <Card.Body>
         <Card.Title>{movie.Title}</Card.Title>
-        <Card.Text className="movie-director">{movie.Director?.Name}</Card.Text>
+        <Card.Text>{movie.Director?.Name}</Card.Text>
+
+        {/* Use Link instead of onClick */}
         <Button
-          className="btn-open me-2"
-          onClick={handleClick}
+          as={Link}
+          to={`/movies/${encodeURIComponent(movie.Title)}`}
           variant="primary"
         >
           Open Details
         </Button>
+
         <Button
-          className="btn-favorite"
-          variant={isFavorite ? "secondary" : "outline-primary"}
+          variant={isFavorite ? "danger" : "success"}
           onClick={handleFavoriteToggle}
+          className="ms-2"
         >
           {isFavorite ? "Unfavorite" : "Favorite"}
         </Button>
@@ -88,30 +67,9 @@ export const MovieCard = ({ movie, user, updateFavorites }) => {
 };
 
 MovieCard.propTypes = {
-  movie: PropTypes.shape({
-    _id: PropTypes.string.isRequired,
-    Title: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired,
-    ImageURL: PropTypes.string.isRequired,
-    Genre: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Description: PropTypes.string,
-    }).isRequired,
-    Director: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Bio: PropTypes.string,
-      Birth: PropTypes.string,
-      Death: PropTypes.string,
-    }).isRequired,
-    RottenTomatoesRating: PropTypes.string,
-    ReleaseDate: PropTypes.string,
-  }).isRequired,
+  movie: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
   updateFavorites: PropTypes.func.isRequired,
-  user: PropTypes.shape({
-    Username: PropTypes.string,
-    username: PropTypes.string,
-    FavoriteMovies: PropTypes.arrayOf(PropTypes.string),
-  }),
 };
 
 export default MovieCard;
