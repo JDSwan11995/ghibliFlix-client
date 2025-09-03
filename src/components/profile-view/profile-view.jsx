@@ -8,7 +8,7 @@ import {
   Image,
   Row,
 } from "react-bootstrap";
-import { MovieCard } from "../MovieCard/MovieCard";
+import MovieCard from "../movie-card/movie-card";
 
 export const ProfileView = ({ movies, onLoggedOut }) => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
